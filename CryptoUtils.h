@@ -56,7 +56,7 @@ public:
     return get<uint16_t>();
   };
   // Scramble32 originally uses AES to generates the mapping relationship between a BB and its switchvar
-  // Hikari updates this by doing this purely out of random
+  // Hikari updates this by doing this using mt19937_64 in C++ STLs which is a faster but less cryprographically secured
   // This method try to find the corresponding value from the VMap first, if not then use RNG to generate,fill and return the value
   uint32_t scramble32(uint32_t in,std::map<uint32_t/*IDX*/,uint32_t/*VAL*/>& VMap);
   private:
